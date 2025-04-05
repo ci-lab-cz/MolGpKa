@@ -65,11 +65,11 @@ def predict(mol, state_dicts, uncharged=True):
     if uncharged:
         un = rdMolStandardize.Uncharger()
         mol = un.uncharge(mol)
-        mol = Chem.MolFromSmiles(Chem.MolToSmiles(mol))
+        mol.UpdatePropertyCache()
     mol = AllChem.AddHs(mol)
     base_dict = predict_base(mol, models['base'])
     acid_dict = predict_acid(mol, models['acid'])
-    return base_dict, acid_dict
+    return base_dict, acid_dict, mol
 
 def predict_for_protonate(mol, uncharged=True):
     if uncharged:
