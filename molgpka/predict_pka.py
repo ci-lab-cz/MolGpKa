@@ -12,9 +12,9 @@ import numpy as np
 import pandas as pd
 
 import torch
-from utils.ionization_group import get_ionization_aid
-from utils.descriptor import mol2vec
-from utils.net import GCNNet
+from molgpka.utils.ionization_group import get_ionization_aid
+from molgpka.utils.descriptor import mol2vec
+from molgpka.utils.net import GCNNet
 
 root = osp.abspath(osp.dirname(__file__))
 

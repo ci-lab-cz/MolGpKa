@@ -1,2 +1,3 @@
 include molgpka/models/weight_acid.pth
 include molgpka/models/weight_base.pth
+include molgpka/utils/smarts_pattern.tsv
