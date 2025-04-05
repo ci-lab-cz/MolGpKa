@@ -5,7 +5,7 @@ RDLogger.DisableLog('rdApp.*')
 from rdkit.Chem import rdmolops
 
 import numpy as np
-from utils.ionization_group import get_ionization_aid
+from molgpka.utils.ionization_group import get_ionization_aid
 
 import torch
 from torch_geometric.data import Data
