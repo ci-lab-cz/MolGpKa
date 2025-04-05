@@ -1,4 +1,4 @@
-from utils.descriptor import mol2vec
+from molgpka.utils.descriptor import mol2vec
 import pickle
 from sklearn.model_selection import train_test_split
 
