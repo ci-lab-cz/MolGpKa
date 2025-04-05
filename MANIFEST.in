@@ -1,4 +1,2 @@
-include README.md
-include LICENSE.md
-
-recursive-include models *.pth
+include molgpka/models/weight_acid.pth
+include molgpka/models/weight_base.pth

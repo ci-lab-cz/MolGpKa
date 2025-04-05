@@ -34,7 +34,7 @@ def model_pred(m2, aid, model, device="cpu"):
     return pka
 
 def predict_acid(mol):
-    model_file = osp.join(root, "../models/weight_acid.pth")
+    model_file = osp.join(root, "models/weight_acid.pth")
     model_acid = load_model(model_file)
 
     acid_idxs= get_ionization_aid(mol, acid_or_base="acid")
@@ -45,7 +45,7 @@ def predict_acid(mol):
     return acid_res
 
 def predict_base(mol):
-    model_file = osp.join(root, "../models/weight_base.pth")
+    model_file = osp.join(root, "models/weight_base.pth")
     model_base = load_model(model_file)
 
     base_idxs= get_ionization_aid(mol, acid_or_base="base")
