@@ -18,12 +18,19 @@ from molgpka.utils.net import GCNNet
 
 root = osp.abspath(osp.dirname(__file__))
 
-def load_models(device="cpu"):
-    models = {}
+
+def load_state_dicts(device="cpu"):
+    output = {}
     for name in ("acid", "base"):
         model_file = osp.join(root, f"models/weight_{name}.pth")
-        model= GCNNet().to(device)
-        model.load_state_dict(torch.load(model_file, map_location=device))
+        output[name] = torch.load(model_file, map_location=device)
+    return output
+
+def load_models(state_dicts, device="cpu"):
+    models = {}
+    for name, state_dict in state_dicts.items():
+        model = GCNNet().to(device)
+        model.load_state_dict(state_dict)
         model.eval()
         models[name] = model
     return models
@@ -53,7 +60,8 @@ def predict_base(mol, model_base):
         base_res.update({aid:bpka})
     return base_res
 
-def predict(mol, models, uncharged=True):
+def predict(mol, state_dicts, uncharged=True):
+    models = load_models(state_dicts)
     if uncharged:
         un = rdMolStandardize.Uncharger()
         mol = un.uncharge(mol)
